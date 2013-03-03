@@ -7,14 +7,13 @@
   Author URI: http://dev.wrclan.com/
   Plugin URI: http://dev.wrclan.com/
   */
-?>
+
 
 //Register the Admin page
-function sc2r_admin() {
-    include('/Admin/sc2r_admin.php');
+add_action('admin_menu', 'register_custom_menu_page');
+
+function register_custom_menu_page() {
+   add_menu_page('SC2Replay', 'SC2Replay', 'publish_posts', 'SC2ReplayInfo/Admin/sc2r_admin.php', '',   plugins_url('SC2ReplayInfo/Assets/sc2_menu.png'), 100);
 }
 
-function sc2r_admin_actions() {
-    add_options_page("Replays", "Replays", 1, "Replays", "sc2r_admin");
-}
-add_action('admin_menu', 'sc2r_admin_actions');
+?>
